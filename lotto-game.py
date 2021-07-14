@@ -4,10 +4,20 @@ randomly pick 6 number in the same range. Player wins if 3 hits are made.'''
 
 num_list = []
 print('Pick 6 numbers from range 1-49.')
-for i in range(1, 7):
-    num = int(input(f'Choose {i} number: '))
-    num_list.append(num)
-    num_list.sort()
+i = 1
+while len(num_list) < 6:
+    try:
+        num = int(input(f'Choose {i} number: '))
+        if num > 49:
+            raise Warning
+        i += 1
+        num_list.append(num)
+        num_list.sort()
+    except ValueError:
+        print('Numbers only.')
+    except Warning:
+        print('Pick a number from range 1-49:')
+
 print(f'Your numbers: {num_list}')
 
 
